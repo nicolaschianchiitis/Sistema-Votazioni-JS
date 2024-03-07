@@ -105,14 +105,26 @@ class SistemaVotazioni{
             const divBtn = document.getElementById("divBtn");
             let btnVoto = document.createElement("button");
             btnVoto.innerHTML = `Vota per "${progetto.titolo}"`;
-            btnVoto.setAttribute("onclick", `sistemaVotazioni.vota("${progetto.titolo}")`);
+            btnVoto.setAttribute("onclick", `pgm.sistemaVotazioni.vota("${progetto.titolo}")`);
             divBtn.appendChild(btnVoto);
             divBtn.innerHTML += "<br>";
         }
     }
 }
 
-let sistemaVotazioni = new SistemaVotazioni();
-sistemaVotazioni.aggiungiProgetto(new Progetto("Intelligenza artificiale", 0));
-sistemaVotazioni.aggiungiProgetto(new Progetto("Energia atomica", 0));
-sistemaVotazioni.aggiungiProgetto(new Progetto("Sensibilizzazione sui monopoli tecnologici", 0));
+class Main{
+    sistemaVotazioni;
+
+    constructor(){
+        this.sistemaVotazioni = new SistemaVotazioni();
+    }
+
+    init(){
+        this.sistemaVotazioni.aggiungiProgetto(new Progetto("Intelligenza artificiale", 0));
+        this.sistemaVotazioni.aggiungiProgetto(new Progetto("Energia atomica", 0));
+        this.sistemaVotazioni.aggiungiProgetto(new Progetto("Sensibilizzazione sui monopoli tecnologici", 0));
+    }
+}
+
+let pgm = new Main();
+pgm.init();
